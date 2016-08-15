@@ -24,9 +24,8 @@ public class TestController {
 	@Autowired
 	private ElasticTestService testService;
 
-	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/alumni", method = RequestMethod.POST)
-	public ResponseEntity call1(@RequestBody User user) {
+	public ResponseEntity<String> call1(@RequestBody User user) {
 		if (!StringUtils.isAlpha(user.getName())
 				|| user.getAddresses().stream().anyMatch(addr -> !StringUtils.isNumeric(addr.getNumber()))
 				|| user.getAddresses().stream().anyMatch(address -> StringUtils.isEmpty(address.getCountry())
